@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Piyush Kumar Singh | Bib Web Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700,400|Montserrat:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #120078;
+      --secondary: #9D0191;
+      --accent: #FD3A69;
+      --yellow: #FCEE09;
+      --cyan: #08F7FE;
+      --glass: rgba(255,255,255,0.11);
+    }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      background: linear-gradient(120deg, var(--primary), var(--secondary), var(--accent), var(--yellow), var(--cyan));
+      background-size: 700% 700%;
+      animation: bgmove 17s linear infinite alternate;
+      overflow-x: hidden;
+    }
+    @keyframes bgmove {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2.2rem 0 1.2rem 0;
+      font-size: 1.15rem;
+      font-family: 'Orbitron',sans-serif;
+      background: var(--glass);
+      z-index: 10;
+      position: relative;
+      border-bottom: 1.5px solid var(--cyan);
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.65em 1.7em;
+      border-radius: 30px;
+      background: transparent;
+      transition: background 0.3s, color 0.3s;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    nav a.active, nav a:hover {
+      background: var(--cyan);
+      color: var(--primary);
+      box-shadow: 0 4px 18px #08F7FE99;
+    }
+    .container {
+      max-width: 850px;
+      margin: 2.7rem auto;
+      padding: 2rem;
+      background: rgba(0,0,0,0.17);
+      border-radius: 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.17);
+      position: relative;
+      z-index: 2;
+    }
+    .hide { display: none; }
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 3px;
+      margin-top: 0;
+      text-shadow: 0 4px 24px #12007890;
+    }
+    h1 { font-size: 2.2rem; color: var(--cyan);}
+    h2 { font-size: 1.5rem; color: var(--accent);}
+    .highlight { color: var(--accent); font-weight: bold; }
+    .avatar {
+      width: 115px; height: 115px;
+      border-radius: 50%;
+      margin-bottom: 1.2rem;
+      object-fit: cover;
+      border: 4px solid var(--cyan);
+      box-shadow: 0 2px 24px #FD3A6966;
+    }
+    /* Login Form */
+    .login-form {
+      max-width: 350px;
+      margin: 2rem auto;
+      background: var(--glass);
+      border-radius: 1.3rem;
+      padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+      box-shadow: 0 4px 28px #0003;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      z-index: 2;
+    }
+    .login-form input {
+      padding: 0.8em 1em;
+      border-radius: 1em;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #fff9;
+      color: #222;
+      font-family: inherit;
+      transition: box-shadow 0.2s;
+    }
+    .login-form input:focus {
+      box-shadow: 0 0 0 2px var(--cyan);
+    }
+    .login-form button {
+      background: linear-gradient(90deg, var(--cyan) 40%, var(--accent) 100%);
+      color: #fff;
+      padding: 0.7em 2em;
+      border: none;
+      border-radius: 2em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 16px #2b86c544;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .login-form button:hover {
+      background: linear-gradient(90deg, var(--accent) 40%, var(--cyan) 100%);
+      transform: scale(1.04);
+    }
+    /* Contact Form & Messages */
+    .contact-form {
+      max-width: 500px;
+      margin: 2rem auto 1rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      z-index: 2;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 0.7em 1em;
+      border-radius: 1.2em;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      background: #fff9;
+      color: #2b2b2b;
+      transition: box-shadow 0.2s;
+      font-family: inherit;
+      resize: none;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .contact-form textarea { min-height: 80px; resize: vertical; }
+    .contact-form button {
+      background: linear-gradient(90deg, var(--cyan) 40%, var(--accent) 100%);
+      color: #fff;
+      padding: 0.7em 2em;
+      border: none;
+      border-radius: 2em;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 10px #FD3A6922;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-form button:hover {
+      background: linear-gradient(90deg, var(--accent) 40%, var(--cyan) 100%);
+      transform: scale(1.04);
+    }
+    .thanks-msg {
+      color: var(--accent);
+      font-weight: bold;
+      margin-top: 1.2rem;
+      font-size: 1.12rem;
+      text-align: center;
+    }
+    /* Message/Axis Table */
+    .messages-axis {
+      margin: 2.5rem auto 0 auto;
+      width: 100%;
+      max-width: 700px;
+      background: var(--glass);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 24px #0003;
+      padding: 1rem;
+    }
+    .messages-axis h2 {
+      margin-bottom: 1.3rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #fff;
+      font-size: 1.04rem;
+      background: transparent;
+    }
+    th, td {
+      padding: 0.7em 0.5em;
+      text-align: left;
+      border-bottom: 1px solid var(--cyan);
+    }
+    th {
+      color: var(--yellow);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.08rem;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    /* Responsive */
+    @media (max-width: 700px) {
+      .container {padding: 1.1rem;}
+      .avatar {width: 80px; height: 80px;}
+      .messages-axis {padding: 0.5rem;}
+      table {font-size: 0.95rem;}
+      nav {font-size: 1rem;}
+    }
+    @media (max-width: 480px) {
+      .container {padding: 0.2rem;}
+      .login-form, .contact-form {padding: 1rem;}
+      nav {gap: 0.4rem; padding: 1.2rem 0 0.5rem 0;}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="#home" class="active" onclick="showSection('home', event)">Home</a>
+    <a href="#about" onclick="showSection('about', event)">About Me</a>
+    <a href="#contact" onclick="showSection('contact', event)">Contact</a>
+    <a href="#login" onclick="showSection('login', event)">Login</a>
+    <a href="#resume" onclick="showSection('resume', event)">Resume</a>
+  </nav>
+  <div class="container" id="home-section">
+    <h1>Welcome to <span class="highlight">Piyush's Bib Web Page</span></h1>
+    <p style="font-size:1.13rem;max-width:520px;">
+      Explore a creative, animated and professional web experience. Use the navigation above to visit my Home, About Me, Contact, Login, and Resume (Axis of Messages) sections.
+    </p>
+    <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Piyush Kumar Singh" />
+  </div>
+  <div class="container hide" id="about-section">
+    <h1>About Me</h1>
+    <p>
+      Hello! I'm <span class="highlight">Piyush Kumar Singh</span>, a passionate and creative web developer.
+      <br><br>
+      I enjoy building unique, animated experiences and solving tough programming challenges. My focus is on blending art with technology to create memorable web interfaces.
+      <br><br>
+      <b>Skills:</b> HTML, CSS, JavaScript, React, UI/UX, Animations, Responsive Design.
+    </p>
+  </div>
+  <div class="container hide" id="contact-section">
+    <h1>Contact Me</h1>
+    <form class="contact-form" id="contactForm" autocomplete="off" onsubmit="return sendMessage(event)">
+      <input type="text" id="contactName" placeholder="Your Name" required>
+      <input type="email" id="contactEmail" placeholder="Your Email" required>
+      <textarea id="contactMsg" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+      <div id="thanks" class="thanks-msg" style="display:none;">Thank you for your message! 🎉</div>
+    </form>
+  </div>
+  <div class="container hide" id="login-section">
+    <h1>Login</h1>
+    <form class="login-form" id="loginForm" autocomplete="off" onsubmit="return loginUser(event)">
+      <input type="text" id="loginUser" placeholder="Username" required>
+      <input type="password" id="loginPass" placeholder="Password" required>
+      <button type="submit">Login</button>
+      <div id="loginMsg" class="thanks-msg" style="display:none;color:var(--yellow);">Welcome, Piyush! (Demo only)</div>
+    </form>
+  </div>
+  <div class="container hide" id="resume-section">
+    <h1>Resume (Axis of Messages)</h1>
+    <div class="messages-axis">
+      <h2>Messages Sent to Me</h2>
+      <table id="messagesTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Messages will be shown here -->
+        </tbody>
+      </table>
+      <div id="nomsg" style="text-align:center;color:var(--yellow);padding:1.2em;">No messages yet!</div>
+    </div>
+  </div>
+  <script>
+    // Navigation & Section Control
+    function showSection(id, event) {
+      event.preventDefault();
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      document.querySelector('nav a[href="#'+id+'"]').classList.add('active');
+      // Hide all containers
+      document.querySelectorAll('.container').forEach(s => s.classList.add('hide'));
+      // Show the section
+      document.getElementById(id + '-section').classList.remove('hide');
+      // Special: when resume, update messages
+      if(id === 'resume') updateMessages();
+    }
+    // Contact/Message Axis Logic
+    let messages = [];
+    function sendMessage(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const msg = document.getElementById("contactMsg").value.trim();
+      if(name && email && msg) {
+        messages.push({
+          date: new Date().toLocaleString(),
+          name, email, msg
+        });
+        document.getElementById('thanks').style.display = 'block';
+        setTimeout(()=>{
+          document.getElementById('thanks').style.display = 'none';
+          document.getElementById('contactForm').reset();
+        }, 2300);
+      }
+      return false;
+    }
+    // Resume Axis Table Update
+    function updateMessages() {
+      const tbody = document.querySelector("#messagesTable tbody");
+      tbody.innerHTML = "";
+      if(messages.length === 0) {
+        document.getElementById('nomsg').style.display = 'block';
+      } else {
+        document.getElementById('nomsg').style.display = 'none';
+        messages.slice().reverse().forEach(m => {
+          const tr = document.createElement("tr");
+          tr.innerHTML = `<td>${m.date}</td><td>${m.name}</td><td>${m.email}</td><td>${m.msg.replace(/</g,"&lt;")}</td>`;
+          tbody.appendChild(tr);
+        });
+      }
+    }
+    // Login Demo
+    function loginUser(e) {
+      e.preventDefault();
+      document.getElementById('loginMsg').style.display = 'block';
+      setTimeout(()=>{
+        document.getElementById('loginMsg').style.display = 'none';
+        document.getElementById('loginForm').reset();
+      }, 2000);
+      return false;
+    }
+    // On load, show section from hash if any
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = location.hash.replace('#','');
+      if(hash && document.getElementById(hash+'-section')) showSection(hash, {preventDefault:()=>{}});
+      else showSection('home', {preventDefault:()=>{}});
+    });
+  </script>
+</body>
+</html>
